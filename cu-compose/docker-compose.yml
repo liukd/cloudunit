@@ -11,6 +11,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       volumes:
           - redis-data:/data
       labels:
@@ -27,6 +28,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       volumes:
             - mysqldata:/var/lib/mysql
       labels:
@@ -54,6 +56,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       labels:
           - "traefik.frontend.entryPoints=https"
           - "traefik.backend=manager"
@@ -71,6 +74,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       volumes:
           - /:/rootfs:ro
           - /var/run:/var/run:rw
@@ -97,6 +101,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       environment:
         GITLAB_OMNIBUS_CONFIG: |
                external_url 'https://${CU_GITLAB_DOMAIN}'
@@ -121,6 +126,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       labels:
           - "traefik.frontend.entryPoints=https"
           - "traefik.backend=jenkins"
@@ -136,6 +142,7 @@ services:
       - "http_proxy=${http_proxy}"
       - "https_proxy=${https_proxy}"
       - "ftp_proxy=${ftp_proxy}"
+      - no_proxy="localhost,127.0.0.1,172.18.0.0"
     volumes:
       - 'sonar-data:/opt/sonarqube/data'
       - 'sonar-extensions:/opt/sonarqube/extensions'
@@ -160,6 +167,7 @@ services:
         - "http_proxy=${http_proxy}"
         - "https_proxy=${https_proxy}"
         - "ftp_proxy=${ftp_proxy}"
+        - no_proxy="localhost,127.0.0.1,172.18.0.0"
       labels:
         - "traefik.frontend.entryPoints=https"
         - "traefik.backend=cu-nexus"
@@ -176,6 +184,7 @@ services:
           - "http_proxy=${http_proxy}"
           - "https_proxy=${https_proxy}"
           - "ftp_proxy=${ftp_proxy}"
+          - no_proxy="localhost,127.0.0.1,172.18.0.0"
       ports:
           - "80:80"
           - "443:443"
